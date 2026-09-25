@@ -4,7 +4,7 @@ require("dotenv").config();
 const app = express();
 
 app.set("view engine", "ejs");
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 const client = new MongoClient(process.env.MONGODB_URI);
 
 async function startServer() {
