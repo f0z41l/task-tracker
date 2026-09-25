@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task Tracker</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="header">
+            <h1>Task Tracker</h1>
+            <a href="/add" class="add-btn">+ Add Task</a>
+        </div>
+
+        <% if (tasks.length === 0) { %>
+
+            <p class="empty">No tasks yet. Add your first task!</p>
+
+        <% } %>
+
+        <% tasks.forEach(task => { %>
+
+            <div class="task-card">
+
+                <h2><%= task.title %></h2>
+
+                <p><%= task.description %></p>
+
+                <div class="task-info">
+                    <span>📅 <%= task.date %></span>
+                    <span>⏰ <%= task.time %></span>
+                    
+                    <span class="status <%= task.status %>">
+                    📌 <%= task.status %>
+                    </span>
+                </div>
+
+                <div class="actions">
+
+                    <a href="/edit/<%= task._id %>">
+                        Edit
+                    </a>
+
+                    <form action="/delete/<%= task._id %>" method="POST">
+                        <button type="submit">Delete</button>
+                    </form>
+
+                </div>
+
+            </div>
+
+        <% }) %>
+
+    </div>
+
+</body>
+</html>

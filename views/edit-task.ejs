@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Task</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+
+    <div class="container form-container">
+
+        <h1>Edit Task</h1>
+
+        <form action="/edit/<%= task._id %>" method="POST" class="task-form">
+
+            <label>Task Title</label>
+            <input
+                type="text"
+                name="title"
+                value="<%= task.title %>"
+                required
+            >
+
+            <label>Description</label>
+            <textarea name="description"><%= task.description %></textarea>
+
+            <label>Date</label>
+            <input
+                type="date"
+                name="date"
+                value="<%= task.date %>"
+                required
+            >
+
+            <label>Time</label>
+            <input
+                type="time"
+                name="time"
+                value="<%= task.time %>"
+                required
+            >
+
+            <label>Status</label>
+            <select name="status">
+
+                <option value="pending"
+                    <%= task.status === "pending" ? "selected" : "" %>>
+                    Pending
+                </option>
+
+                <option value="completed"
+                    <%= task.status === "completed" ? "selected" : "" %>>
+                    Completed
+                </option>
+
+            </select>
+
+            <button type="submit" class="submit-btn">
+                Update Task
+            </button>
+
+        </form>
+
+        <a href="/" class="back-link">← Back to Tasks</a>
+
+    </div>
+
+</body>
+</html>
